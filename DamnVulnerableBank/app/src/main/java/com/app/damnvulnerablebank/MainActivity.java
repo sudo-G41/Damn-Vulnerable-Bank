@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
         setContentView(R.layout.activity_banklogin);
 
        boolean isDebuggable = (0 != (getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE));
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if(isDebuggable){
-            Toast.makeText(getApplicationContext(),"Debbuger is Running", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"Warning Message Change Test", Toast.LENGTH_SHORT).show();
         }
 
         if(RootUtil.isDeviceRooted()) {

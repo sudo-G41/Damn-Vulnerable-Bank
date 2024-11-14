@@ -26,3 +26,7 @@ hs_err_pid*
 node_modules/
 # Local Netlify folder
 .netlify
+
+# VSCode 관련 파일 무시
+.vscode/
+*.code-workspace

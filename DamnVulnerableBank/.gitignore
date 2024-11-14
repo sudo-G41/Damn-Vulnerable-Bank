@@ -12,3 +12,65 @@
 /captures
 .externalNativeBuild
 .cxx
+
+# 기본적인 Android 관련 파일 무시
+.gradle/
+.idea/
+local.properties
+.DS_Store
+/build/
+.cxx/
+
+# IntelliJ IDEA / Android Studio 설정 파일
+*.iml
+*.hprof
+.idea/caches
+.idea/libraries
+.idea/modules.xml
+.idea/workspace.xml
+.idea/assetWizardSettings.xml
+.idea/gradle.xml
+.idea/sonarlint
+.idea/navEditor.xml
+
+# 빌드 결과물
+**/build/
+**/bin/
+**/out/
+**/generated/
+
+# Gradle 캐시
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.properties
+
+# 사용자 또는 시스템에 종속적인 파일
+*.keystore
+.idea/misc.xml
+.idea/gradle.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/.name
+
+# Android Lint
+lint/reports/
+lint/results/
+
+# 빌드 아티팩트
+*.apk
+*.ap_
+*.aab
+*.obb
+
+# 로그 파일
+*.log
+
+# 프로파일링 파일
+*.hprof
+
+# 영문법 검사 플러그인
+/grammar.xml
+
+# 기타
+/local.properties
+/.env
