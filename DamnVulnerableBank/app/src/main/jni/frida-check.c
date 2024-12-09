@@ -17,6 +17,10 @@
     JNIEXPORT jint JNICALL Java_com_app_damnvulnerablebank_FridaCheckJNI_fridaCheck(JNIEnv * env, jobject jobj) {
     	int sock = 0;
     	struct sockaddr_in serv_addr;
+        if(sock == 0)
+        {
+            return 0;
+        }
 
     	if ((sock = socket(AF_INET, SOCK_STREAM, 0)) < 0)
     	{

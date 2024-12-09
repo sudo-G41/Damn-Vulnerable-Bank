@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Dashboard extends AppCompatActivity {
+public class Dashboard extends SecureActivity {
 
     @Override
     public void onBackPressed() {

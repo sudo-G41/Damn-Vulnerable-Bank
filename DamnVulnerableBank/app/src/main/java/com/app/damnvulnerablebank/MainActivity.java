@@ -1,7 +1,6 @@
 package com.app.damnvulnerablebank;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -27,7 +26,7 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends SecureActivity {
 
     @Override
     public void onBackPressed() {
@@ -44,12 +43,12 @@ public class MainActivity extends AppCompatActivity {
                 }).create().show();
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_banklogin);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
 
        boolean isDebuggable = (0 != (getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE));
        FridaCheckJNI fridaCheck = new FridaCheckJNI();
@@ -84,10 +83,6 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Frida is NOT running", Toast.LENGTH_SHORT).show();
         }
 
-
-
-
-
         SharedPreferences sharedPreferences = getSharedPreferences("jwt", Context.MODE_PRIVATE);
         boolean isloggedin=sharedPreferences.getBoolean("isloggedin", false);
         if(isloggedin)
@@ -97,8 +92,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-
-
 
     public void loginPage(View view){
         Intent intent =new Intent(getApplicationContext(), BankLogin.class);

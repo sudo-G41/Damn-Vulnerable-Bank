@@ -23,7 +23,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Myprofile extends AppCompatActivity {
+public class Myprofile extends SecureActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

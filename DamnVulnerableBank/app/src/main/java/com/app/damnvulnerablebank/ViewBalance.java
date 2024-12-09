@@ -22,7 +22,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ViewBalance extends AppCompatActivity {
+public class ViewBalance extends SecureActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

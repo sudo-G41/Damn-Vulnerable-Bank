@@ -31,7 +31,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class PendingBeneficiary extends AppCompatActivity implements Padapter.OnItemClickListener{
+public class PendingBeneficiary extends SecureActivity implements Padapter.OnItemClickListener{
     public static final String id="id";
     RecyclerView recyclerView;
     List<PendingBeneficiaryRecords> precords;

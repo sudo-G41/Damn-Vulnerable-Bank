@@ -24,7 +24,7 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class BankLogin extends AppCompatActivity {
+public class BankLogin extends SecureActivity {
 
     private ProgressBar spinner;
     private RelativeLayout priv;

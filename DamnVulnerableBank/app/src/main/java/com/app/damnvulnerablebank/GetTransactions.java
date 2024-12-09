@@ -28,7 +28,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class GetTransactions extends AppCompatActivity {
+public class GetTransactions extends SecureActivity {
 
         RecyclerView recyclerView;
         List<TransactionRecords> trecords;

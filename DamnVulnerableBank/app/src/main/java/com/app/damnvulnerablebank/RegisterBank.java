@@ -21,7 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class RegisterBank extends AppCompatActivity {
+public class RegisterBank extends SecureActivity {
     FirebaseAuth auth;
 
     public void backToMain(View view){

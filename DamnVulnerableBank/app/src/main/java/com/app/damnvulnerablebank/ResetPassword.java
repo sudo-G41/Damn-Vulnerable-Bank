@@ -24,7 +24,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ResetPassword extends AppCompatActivity {
+public class ResetPassword extends SecureActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

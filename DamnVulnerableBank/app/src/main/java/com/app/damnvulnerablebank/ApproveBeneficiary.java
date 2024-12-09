@@ -25,7 +25,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ApproveBeneficiary extends AppCompatActivity {
+public class ApproveBeneficiary extends SecureActivity {
     TextView hey;
 
     @Override

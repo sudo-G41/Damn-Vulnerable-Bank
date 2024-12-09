@@ -35,7 +35,7 @@ import java.util.concurrent.Executor;
 
 import static com.app.damnvulnerablebank.ViewBeneficiaryAdmin.beneficiary_account_number;
 
-public class SendMoney extends AppCompatActivity {
+public class SendMoney extends SecureActivity {
 
     Button send;
     TextView tt;

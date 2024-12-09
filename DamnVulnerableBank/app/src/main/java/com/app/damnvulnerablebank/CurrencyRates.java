@@ -9,7 +9,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-public class CurrencyRates extends AppCompatActivity {
+public class CurrencyRates extends SecureActivity {
     String getToken;
 
 

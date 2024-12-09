@@ -28,7 +28,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ViewBeneficiary extends AppCompatActivity  implements Badapter.OnItemClickListener {
+public class ViewBeneficiary extends SecureActivity  implements Badapter.OnItemClickListener {
     public static final String beneficiary_account_number="beneficiary_account_number";
     RecyclerView recyclerView;
     List<BeneficiaryRecords> brecords;

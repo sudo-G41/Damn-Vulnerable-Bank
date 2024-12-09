@@ -24,7 +24,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AddBeneficiary extends AppCompatActivity {
+public class AddBeneficiary extends SecureActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
