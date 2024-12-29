@@ -28,6 +28,16 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: false
+    },
+    sign_in: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0
+    },
+    resident_number: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true
     }
   }, {
     timestamps: false

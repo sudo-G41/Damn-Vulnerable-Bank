@@ -33,7 +33,6 @@ public class BankLogin extends SecureActivity {
         startActivity(into);
     }
 
-
     public void bankLogin(View view)
     {
         final TextView t1 = findViewById(R.id.log);
@@ -45,7 +44,6 @@ public class BankLogin extends SecureActivity {
         spinner.setVisibility(View.VISIBLE);
         final String email = inputEmail.getText().toString().trim();
         final String password = inputPassword.getText().toString().trim();
-
 
         SharedPreferences sharedPreferences = getSharedPreferences("apiurl", Context.MODE_PRIVATE);
         final String url = sharedPreferences.getString("apiurl",null);
@@ -71,21 +69,21 @@ public class BankLogin extends SecureActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-
                             JSONObject decryptedResponse = new JSONObject(EncryptDecrypt.decrypt(response.get("enc_data").toString()));
 
                             // Check for error message
                             if(decryptedResponse.getJSONObject("status").getInt("code") != 200) {
                                 Toast.makeText(getApplicationContext(), "Error: " + decryptedResponse.getJSONObject("data").getString("message"), Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(BankLogin.this, BankLogin.class));
-                                return;
                                 // This is buggy. Need to call Login activity again if incorrect credentials are given
                             }
 
                             JSONObject obj = decryptedResponse.getJSONObject("data");
                             String accessToken=obj.getString("accessToken");
+                            String message=obj.getString("message");
                             SharedPreferences sharedPreferences = getSharedPreferences("jwt", Context.MODE_PRIVATE);
                             Log.d("accesstoken",accessToken);
+                            Log.d("message",message);
                             sharedPreferences.edit().putString("accesstoken",accessToken).apply();
                             sharedPreferences.edit().putBoolean("isloggedin",true).apply();
                             startActivity(new Intent(BankLogin.this, Dashboard.class));

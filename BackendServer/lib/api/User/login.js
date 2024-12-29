@@ -25,23 +25,50 @@ router.post('/', decryptRequest, (req, res) => {
             username: username,
             password: password
         }
-    }).then((data) => {
+    }).then(async (data) => {
         if(data) {
-            const accessToken = jwt.sign({
-                username: data.username,
-                is_admin: data.is_admin
-            }, "secret");
-            r.status = statusCodes.SUCCESS;
-            r.data = {
-                "accessToken": accessToken
-            };
-            return res.json(encryptResponse(r));
+            console.log("data:",data);
+            console.log("sign : ", data.sign_in);
+            if(data.sign_in < 5) {
+                //로그인 성공으로 인한 초기화
+                await data.update({ sign_in: 0 });
+                const accessToken = jwt.sign({
+                    username: data.username,
+                    is_admin: data.is_admin
+                }, "secret");
+                r.status = statusCodes.SUCCESS;
+                r.data = {
+                    "accessToken": accessToken,
+                    "message": "Success access"
+                };
+                return res.json(encryptResponse(r));
+            } else {
+                r.status = statusCodes.FORBIDDEN;
+                r.data = {
+                    "message": "count max"
+                }
+                return res.json(encryptResponse(r));
+                // return res.json(r);
+            }
         } else {
+
+            //해당 아이디 증가
+            Model.users.findOne({
+                where: {
+                    username: username
+                }
+            }).then(async (data) => {
+                if(data) {
+                    await data.update({ sign_in: data.sign_in+1 });
+                }
+            })
+
             r.status = statusCodes.BAD_INPUT;
             r.data = {
                 "message": "Incorrect username or password"
             }
             return res.json(encryptResponse(r));
+            // return res.json(r);
         }
     }).catch((err) => {
         r.status = statusCodes.SERVER_ERROR;
@@ -49,6 +76,7 @@ router.post('/', decryptRequest, (req, res) => {
             "message": err.toString()
         };
         return res.json(encryptResponse(r));
+        // return res.json(r);
     });
 });
 

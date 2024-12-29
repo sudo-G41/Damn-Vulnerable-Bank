@@ -20,6 +20,15 @@ router.post('/', decryptRequest, (req, res) => {
     let username = req.body.username;
     let password = req.body.password;
     let account_number = Math.random() * 888888 + 111111;
+    let resident_number = req.body.resident_number;
+
+    if (!resident_number || resident_number.length !== 14) {
+        r.status = statusCodes.BAD_INPUT;
+        r.data = {
+            "message": "Resident number must be exactly 14 characters."
+        };
+        return res.json(encryptResponse(r));
+    }
     
     Model.users.findAll({
         where: {
@@ -38,7 +47,8 @@ router.post('/', decryptRequest, (req, res) => {
                 Model.users.create({
                     username: username,
                     password: password,
-                    account_number: account_number
+                    account_number: account_number,
+                    resident_number: resident_number
                 }).then(() => {
                     r.status = statusCodes.SUCCESS;
                     r.data = {

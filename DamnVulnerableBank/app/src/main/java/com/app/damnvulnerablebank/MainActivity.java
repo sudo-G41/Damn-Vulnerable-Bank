@@ -80,7 +80,7 @@ public class MainActivity extends SecureActivity {
             finish();
         } else {
             Log.d("FRIDA CHECK", "FRIDA Server NOT RUNNING");
-            Toast.makeText(getApplicationContext(), "Frida is NOT running", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getApplicationContext(), "Frida is NOT running", Toast.LENGTH_SHORT).show();
         }
 
         SharedPreferences sharedPreferences = getSharedPreferences("jwt", Context.MODE_PRIVATE);
@@ -114,8 +114,12 @@ public class MainActivity extends SecureActivity {
         final Button bButton = (Button) findViewById(R.id.healthc);
         RequestQueue queue = Volley.newRequestQueue(this);
         SharedPreferences sharedPreferences = getSharedPreferences("apiurl", Context.MODE_PRIVATE);
+
+        String tmp = sharedPreferences.getString("apiurl",null);
+
         final String url  = sharedPreferences.getString("apiurl",null);
-        String endpoint="/api/health/check";
+
+        String endpoint = "/api/health/check";
         String finalurl = url+endpoint;
 
         try {

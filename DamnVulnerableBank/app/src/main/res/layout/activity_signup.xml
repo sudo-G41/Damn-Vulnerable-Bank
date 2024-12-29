@@ -90,6 +90,39 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/sign_resident_number_frist"
+                    android:layout_width="156dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="resident"
+                    android:inputType="numberSigned"
+                    android:maxLength="6"/>
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="-"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    android:maxLength="7" />
+
+                <EditText
+                    android:id="@+id/sign_resident_number_second"
+                    android:layout_width="163dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="number"
+                    android:inputType="numberPassword" />
+            </LinearLayout>
+
 
         </LinearLayout>
 

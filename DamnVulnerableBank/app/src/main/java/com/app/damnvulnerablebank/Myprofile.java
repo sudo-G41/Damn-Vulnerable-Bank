@@ -34,6 +34,8 @@ public class Myprofile extends SecureActivity {
         final TextView tv2=findViewById(R.id.textView2);
         final TextView tv3=findViewById(R.id.textView3);
         final TextView tv4=findViewById(R.id.textView4);
+        final TextView tv5=findViewById(R.id.textView5);
+        final TextView tv6=findViewById(R.id.textView6);
         SharedPreferences sharedPreferences = getSharedPreferences("jwt", Context.MODE_PRIVATE);
         final String retrivedToken  = sharedPreferences.getString("accesstoken",null);
         final RequestQueue queue = Volley.newRequestQueue(this);
@@ -41,7 +43,6 @@ public class Myprofile extends SecureActivity {
         final String url  = sharedPreferences.getString("apiurl",null);
         String endpoint="/api/user/profile";
         String finalurl = url+endpoint;
-
 
 
         final JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.POST, finalurl,null,
@@ -64,6 +65,7 @@ public class Myprofile extends SecureActivity {
                             String account_number =obj.getString("account_number");
                             String username =obj.getString("username");
                             String is_admin =obj.getString("is_admin");
+                            String resident_number = obj.getString("resident_number");
                             tv1.setText("Name:\t\t" + username);
                             tv2.setText("Account Number:\t\t" + account_number);
                             tv3.setText("Balance:\t\t$" +balance);
@@ -72,6 +74,8 @@ public class Myprofile extends SecureActivity {
                             } else {
                                 tv4.setText("Admin:\t\tNo");
                             }
+                            tv5.setText("resident_number:");
+                            tv6.setText(resident_number);
 
 
                         } catch (JSONException e) {
@@ -91,12 +95,7 @@ public class Myprofile extends SecureActivity {
                 return headers;
             }
 
-
         };
-
-
-
-
 
         queue.add(stringRequest);
         queue.getCache().clear();

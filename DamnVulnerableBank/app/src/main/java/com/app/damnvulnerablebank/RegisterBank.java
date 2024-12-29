@@ -32,9 +32,12 @@ public class RegisterBank extends SecureActivity {
     {
         EditText inputEmail=findViewById(R.id.signupemail_editText);
         EditText inputPassword=findViewById(R.id.signup_password_editText);
+        EditText inputResidentNnumberFrist=findViewById(R.id.sign_resident_number_frist);
+        EditText inputResidentNnumberSecond=findViewById(R.id.sign_resident_number_second);
 
         String email = inputEmail.getText().toString().trim();
         String password = inputPassword.getText().toString().trim();
+        String resident_number = inputResidentNnumberFrist.getText().toString().trim() + "-" + inputResidentNnumberSecond.getText().toString().trim();
 
         SharedPreferences sharedPreferences = getSharedPreferences("apiurl", Context.MODE_PRIVATE);
         final String url = sharedPreferences.getString("apiurl",null);
@@ -48,6 +51,7 @@ public class RegisterBank extends SecureActivity {
             //input your API parameters
             requestData.put("username", email);
             requestData.put("password", password);
+            requestData.put("resident_number", resident_number);
 
             // Encrypt data before sending
             requestDataEncrypted.put("enc_data", EncryptDecrypt.encrypt(requestData.toString()));
@@ -70,13 +74,10 @@ public class RegisterBank extends SecureActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), "You did something wrong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "You did something wrong"+error.toString(), Toast.LENGTH_SHORT).show();
             }
         });
         requestQueue.add(jsonObjectRequest);
-
-
-
 
     }
     @Override
